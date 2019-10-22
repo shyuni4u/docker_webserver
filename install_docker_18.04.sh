@@ -2,7 +2,7 @@
 if [ -z "$1" ]
 then
   echo "Please Insert arguments ( ./install_docker_18.04.sh [APPLICATION_NAME] )"
-  echo "ex:) ./install_docker_18.sh basic_webserver"
+  echo "ex:) ./install_docker_18.04.sh basic_webserver"
   exit 1
 fi
 
@@ -11,13 +11,12 @@ APPLICATION_NAME=$1
 #CREATE DIRECTORY
 echo "#######################"
 echo "## INSTALL IS EXECUTING"
-
 echo "## CREATE DIRECTORY"
 echo "# 1. ./000_application/$APPLICATION_NAME"
 echo "# 2. ./001_database/data"
 echo "# 2. ./001_database/backup"
 
-sudo mkdir -p ./000_application/$APPLICATION_NAME
+sudo mkdir -p ./000_application/$APPLICATION_NAME # 상위 디렉토리가 없을 경우 생성
 sudo mkdir -p ./001_database/data
 sudo mkdir -p ./001_database/backup
 
