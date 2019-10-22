@@ -52,7 +52,7 @@ sudo chmod +x *.sh
 ./stop.sh
 
 echo "## setting mariadb default time zone (2: add default_time_zone)"
-echo 'default_time_zone	= Asia/Seoul' >> ../001_database/conf.d/my.cnf
+echo "default_time_zone	= '+9:00' >> ../001_database/conf.d/my.cnf"
 ./startup.sh
 
 echo "## Connect Mariadb"
