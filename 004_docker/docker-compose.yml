@@ -13,7 +13,7 @@ services:
       - MYSQL_USER=${DB_USER}
       - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-      - UMASK=0064
+      - UMASK=0064 #for heidiSQL
       - LANG=ko_KR.UTF-8
     volumes:
       - ${DB_PATH}/conf.d:/etc/mysql/conf.d #mysql custom configuration
