@@ -21,6 +21,8 @@ services:
       - ${DB_PATH}/data:/var/lib/mysql #data
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+    networks:
+      - lorenzonet
 
   php:
     container_name: php
@@ -35,6 +37,8 @@ services:
       - ${APP_PATH}:/app
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+    networks:
+      - lorenzonet
  
   web:
     container_name: nginx
@@ -54,9 +58,9 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     command: [nginx, '-g', 'daemon off;']
+    networks:
+      - lorenzonet
 
    
 networks:
-  default:
-    # Use a custom driver
-    driver: custom-driver-1
+  lorenzonet:
