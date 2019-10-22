@@ -1,0 +1,68 @@
+version: '2.0'
+services:
+  mariadb:
+    container_name: mariadb
+    hostname: mariadb
+    image: mariadb:latest
+    restart: always
+    expose:
+      - "3306"
+    ports:
+      - 6033:3306
+    environment:
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - UMASK=0064
+      - LANG=ko_KR.UTF-8
+    volumes:
+      - ${DB_PATH}/conf.d:/etc/mysql/conf.d #mysql custom configuration
+      # - ${DB_PATH}/backup:/etc/mysql/backup #backup
+      - ${DB_PATH}/data:/var/lib/mysql #data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    networks:
+      - lorenzonet
+
+  php:
+    container_name: php
+    image: bitnami/php-fpm:latest
+    restart: always
+    environment:
+      - TYPO3_CONTEXT=Development/Docker
+    links:
+      - mariadb
+    volumes:
+      - ${PHP_PATH}/conf.d:/opt/bitnami/php/etc/conf.d
+      - ${APP_PATH}:/app
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    networks:
+      - lorenzonet
+ 
+  web:
+    container_name: nginx
+    image: nginx:alpine
+    restart: always
+    links:
+      - php
+      - mariadb
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ${NX_PATH}/conf.d:/etc/nginx/conf.d
+      - ${NX_PATH}:/var/nginx
+      - ${APP_PATH}:/app
+      - ${NX_PATH}/ssl_key:/etc/ssl_key:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    command: [nginx, '-g', 'daemon off;']
+    networks:
+      - lorenzonet
+
+   
+networks:
+  lorenzonet:
+    external:
+      name: ${LORENZO_NETWORK}
