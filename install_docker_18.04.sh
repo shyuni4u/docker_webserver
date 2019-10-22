@@ -28,25 +28,26 @@ echo "## setting mariadb default time zone (1: delete default_time_zone)"
 sudo sed -i '/default_time_zone/d' ./001_database/conf.d/my.cnf
 
 echo "## setting docker"
-sudo cd ./004_docker
+cd ./004_docker
 
 sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt update -y
 sudo apt autoremove -y
-sudo apt update -y
 sudo apt upgrade -y
 
-sudo apt update
+sudo apt update -y
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-sudo apt update
+sudo apt update -y
 sudo apt-cache policy docker-ce
 
 sudo apt install docker-ce
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+
+sudo chmod 755 *.sh
 ./startup.sh
 ./stop.sh
 

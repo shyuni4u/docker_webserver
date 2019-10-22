@@ -1,2 +1,2 @@
 #! /bin/sh
-docker exec -i -t php bash
+sudo docker exec -i -t php bash

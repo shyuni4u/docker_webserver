@@ -1,2 +1,2 @@
 #! /bin/sh
-docker exec -i -t mariadb bash
+sudo docker exec -i -t mariadb bash

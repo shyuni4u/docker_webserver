@@ -1,2 +1,2 @@
 #! /bin/sh
-docker exec -it nginx /bin/sh
+sudo docker exec -it nginx /bin/sh
