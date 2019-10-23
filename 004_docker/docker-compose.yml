@@ -4,7 +4,7 @@ services:
     container_name: mariadb
     hostname: mariadb
     image: mariadb:latest
-    restart: always
+    restart: always #if container shutdown then restart always
     expose:
       - "3306"
     ports:
@@ -13,7 +13,7 @@ services:
       - MYSQL_USER=${DB_USER}
       - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-      - UMASK=0064 #for heidiSQL
+      # - UMASK=0064 #for heidiSQL
       - LANG=ko_KR.UTF-8
     volumes:
       - ${DB_PATH}/conf.d:/etc/mysql/conf.d #mysql custom configuration
