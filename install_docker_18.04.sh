@@ -54,12 +54,5 @@ echo "## setting mariadb default time zone (2: add default_time_zone)"
 echo "default_time_zone	= '+9:00' >> ../001_database/conf.d/my.cnf"
 ./startup.sh
 
-echo "## Connect Mariadb"
-echo '###############################################################################################'
-echo '#STEP 1. mysql -uroot -p < /etc/mysql/backup/[file name].sql'
-echo '#STEP 2. exit'
-echo '###############################################################################################'
-./conn_mariadb.sh
-
 echo "## INSTALL HAS DONE"
 echo "#######################"
