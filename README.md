@@ -3,8 +3,9 @@ setting php, mariadb and nginx with docker &amp; docker-compose
 
 실행영상(한글): [https://youtu.be/FxH1M8DXngo]
 
-## 1. Start command
 <hr/>
+
+## 1. Start command
 <pre>
   <code>
 git clone https://github.com/shyuni4u/docker_webserver.git
@@ -14,7 +15,6 @@ sudo chmod +x install_docker_18.04.sh
 </pre>
 
 ## 2. Command file
-<hr/>
 
   + Restart docker
   <pre>
@@ -45,7 +45,6 @@ sudo chmod +x install_docker_18.04.sh
   </pre>
   
 ## 3. Setting file
-<hr/>
   <pre>
     <code>
     nano ./004_docker/docker-compose.yml
@@ -53,7 +52,6 @@ sudo chmod +x install_docker_18.04.sh
   </pre>
   
 ## 4. Password file
-<hr/>
   <pre>
     <code>
     nano ./004_docker/.env
