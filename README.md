@@ -1,13 +1,10 @@
 # docker_webserver
 setting php, mariadb and nginx with docker &amp; docker-compose
 
-<hr/>
-
 실행영상(한글): [https://youtu.be/FxH1M8DXngo]
 
+## 1. Start command
 <hr/>
-
-1. Start command
 <pre>
   <code>
 git clone https://github.com/shyuni4u/docker_webserver.git
@@ -16,42 +13,47 @@ sudo chmod +x install_docker_18.04.sh
   </code>
 </pre>
 
+## 2. Command file
 <hr/>
 
-2. Command file
-  + ###### Restart docker
+  + Restart docker
   <pre>
     <code>
     ./004_docker/restart.sh
     </code>
   </pre>
-  + ###### Connect Mariadb
+  
+  + Connect Mariadb
   <pre>
     <code>
     ./004_docker/conn_mariadb.sh
     </code>
   </pre>
-  + ###### Connect NginX
+  
+  + Connect NginX
   <pre>
     <code>
     ./004_docker/conn_nginx.sh
     </code>
   </pre>
-  + ###### Connect PHP
+  
+  + Connect PHP
   <pre>
     <code>
     ./004_docker/conn_php-fpm.sh
     </code>
   </pre>
   
-3. Setting file
+## 3. Setting file
+<hr/>
   <pre>
     <code>
     nano ./004_docker/docker-compose.yml
     </code>
   </pre>
   
-4. Password file
+## 4. Password file
+<hr/>
   <pre>
     <code>
     nano ./004_docker/.env
